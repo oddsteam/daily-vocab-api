@@ -1,7 +1,7 @@
 # 📚 Vocabulary Practice API Workshop
 
 > **FastAPI + MySQL + Docker Workshop Template**
-> เรียนรู้การสร้าง REST API พร้อม Database และ Frontend Integration ในเวลา 1 ชั่วโมง
+> เรียนรู้การสร้าง REST API พร้อม Database และ Frontend Integration
 
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
@@ -11,12 +11,11 @@
 
 ## 📖 เกี่ยวกับ Workshop
 
-Workshop นี้ออกแบบมาเพื่อสอนนักศึกษาสร้างแอปพลิเคชันฝึกภาษาอังกฤษแบบ Full-Stack โดยใช้เทคโนโลยีที่ทันสมัย เหมาะสำหรับนักศึกษาที่กำลังทำ **Term Project** เกี่ยวกับ Vocabulary Learning, Language Practice, หรือโปรเจคที่ต้องการ:
+Workshop นี้ออกแบบมาเพื่อสอนนักศึกษาสร้างแอปพลิเคชันฝึกภาษาอังกฤษแบบ Full-Stack โดยใช้เทคโนโลยีที่ทันสมัย เหมาะสำหรับนักศึกษาที่กำลังทำ **Term Project** เกี่ยวกับ Vocabulary Learning, Language Practice:
 
 - ✅ REST API Backend
 - ✅ Database Integration (MySQL)
 - ✅ Frontend-Backend Connection
-- ✅ Data Visualization
 - ✅ AI/Mock Validation System
 
 ### 🎯 สิ่งที่จะได้เรียนรู้
@@ -24,9 +23,7 @@ Workshop นี้ออกแบบมาเพื่อสอนนักศ�
 - **FastAPI**: สร้าง RESTful API ที่เร็วและมี auto-documentation
 - **MySQL + Docker**: จัดการ database ด้วย Docker Compose
 - **SQLAlchemy ORM**: เชื่อมต่อและจัดการข้อมูลแบบ Object-Oriented
-- **Next.js + React**: สร้าง modern frontend ด้วย TypeScript
 - **API Integration**: เชื่อมต่อ Frontend-Backend อย่างถูกต้อง
-- **Data Visualization**: สร้างกราฟด้วย Recharts
 - **Mock AI System**: เตรียมพร้อมสำหรับ real AI integration (n8n/OpenAI)
 
 ---
@@ -65,24 +62,6 @@ docker-compose up -d
 เปิด browser ไปที่ http://localhost:8000/docs
 
 คุณจะเห็น **Swagger UI** สำหรับทดสอบ API ทันที!
-
-
----
-
-## 📁 โครงสร้างโปรเจค
-```
-vocabulary-api-workshop/
-│
-├── 📂 api/                   # FastAPI Backend
-│   ├── main.py               # API endpoints หลัก
-│   ├── requirements.txt      # Python dependencies
-│   └── Dockerfile            # Backend container config
-│
-│
-├── docker-compose.yml        # Docker orchestration
-├── init.sql                  # Database schema & seed data
-└── README.md                 # คุณกำลังอ่านอยู่! 👋
-```
 
 ---
 
@@ -206,38 +185,6 @@ curl http://localhost:8000/api/summary
 
 ---
 
-## 🎨 Frontend Features
-
-### 1. 🎯 Word Challenge Page (`/`)
-
-หน้าหลักสำหรับฝึกแต่งประโยค
-
-**Features:**
-- แสดงคำศัพท์แบบสุ่มพร้อมความหมาย
-- แสดง difficulty level (Beginner/Intermediate/Advanced)
-- Form สำหรับพิมพ์ประโยค
-- Real-time validation & scoring
-- ระบบสีตามคะแนน:
-  - 🟢 เขียว: คะแนน ≥ 8.0
-  - 🟡 เหลือง: คะแนน 6.0-7.9
-  - 🔴 แดง: คะแนน < 6.0
-- ปุ่มข้ามคำ และลองคำใหม่
-
-### 2. 📊 Dashboard Page (`/dashboard`)
-
-หน้าแสดงสถิติและผลการฝึก
-
-**Features:**
-- **Stats Cards**: 
-  - จำนวนครั้งที่ฝึกทั้งหมด
-  - คะแนนเฉลี่ย
-  - จำนวนคำศัพท์ที่ฝึกแล้ว
-- **Bar Chart**: แสดงการกระจายของการฝึกแยกตาม difficulty level
-- **Recent History**: แสดง 5 รายการล่าสุด พร้อมคะแนนและ feedback
-- Responsive design ใช้งานได้ทั้ง desktop และ mobile
-
----
-
 ## 🛠️ Development Guide
 
 ### การจัดการ Docker Containers
@@ -253,7 +200,7 @@ docker ps
 docker-compose restart
 
 # Restart เฉพาะ FastAPI
-docker-compose restart fastapi
+docker-compose restart vocabapi
 
 # Restart เฉพาะ MySQL
 docker-compose restart mysql
@@ -265,7 +212,7 @@ docker-compose restart mysql
 docker-compose logs -f
 
 # Logs เฉพาะ service
-docker-compose logs -f fastapi
+docker-compose logs -f vocabapi
 docker-compose logs -f mysql
 ```
 
@@ -321,20 +268,6 @@ docker exec vocab_mysql mysqldump -u vocabuser -pvocabpass123 vocabulary_db > ba
 ```bash
 docker exec -i vocab_mysql mysql -u vocabuser -pvocabpass123 vocabulary_db < backup.sql
 ```
-## 🎓 Workshop Timeline
-
-**ระยะเวลา: 1 ชั่วโมง**
-
-| เวลา | หัวข้อ | กิจกรรม | เป้าหมาย |
-|------|--------|---------|----------|
-| - | 🎬 Introduction & Setup | - Clone repository<br>- `docker-compose up`<br>- ทดสอบ API docs | นักศึกษาเห็น environment ที่พร้อมใช้งาน |
-| - | 🐳 Docker & Database | - อธิบาย `docker-compose.yml`<br>- อธิบาย `init.sql`<br>- ทดสอบ MySQL | เข้าใจ Docker architecture |
-| - | ⚡ FastAPI Backend | - Code along: `main.py`<br>- สร้าง 4 endpoints<br>- ทดสอบใน Swagger UI | เข้าใจ REST API & Database ORM |
-| - | ⚛️ Next.js Frontend | - สร้าง Word Challenge page<br>- สร้าง Dashboard<br>- เชื่อมต่อ API | เข้าใจ Frontend-Backend integration |
-| - | ✅ Testing & Demo | - ทดสอบ full flow<br>- แก้ bugs ถ้ามี | นักศึกษามี working application |
-| - | 💡 Q&A & Next Steps | - ตอบคำถาม<br>- แนะนำการพัฒนาต่อ | แนวทางสำหรับ term project |
-
----
 
 ## 🚀 แนะนำการพัฒนาต่อ (สำหรับ Term Project)
 
