@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import words, practice, stats
 from app.database import engine, Base
+from app.schemas import WordResponse
 from datetime import datetime
 
 # Initialize FastAPI app
