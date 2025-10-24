@@ -23,7 +23,9 @@ app.add_middleware(
 def get_random_word():
     """Get a random word"""
     # TODO Write logic here....
-    return [] 
+    return [
+        WordResponse(id=1, word='a', definition='b', difficulty_level='c')
+    ]
 
 
 @app.get("/")
