@@ -43,8 +43,8 @@ Workshop นี้ออกแบบมาเพื่อสอนนักศ�
 
 **1. Clone Repository**
 ```bash
-git clone https://github.com/your-username/vocabulary-api-workshop.git
-cd vocabulary-api-workshop
+git clone {your fork repository URL}
+cd daily-vocab-api
 ```
 
 **2. เริ่ม Backend + Database**
