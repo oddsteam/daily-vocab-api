@@ -1,7 +1,5 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from app.schemas import WordResponse
-from datetime import datetime
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -10,20 +8,16 @@ app = FastAPI(
     description="API for vocabulary practice and learning"
 )
 
-# CORS middleware for Next.js
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 @app.get("/api/word", response_model=WordResponse)
 def get_random_word():
     """Get a random word"""
     # TODO Write logic here....
-    return WordResponse(id=2, word='book', definition='Reading material', difficulty_level='Beginner')
+    return WordResponse(
+        id=2,
+        word='book',
+        definition='Reading material',
+        difficulty_level='Beginner'
+    )
 
 
 @app.get("/")
@@ -38,9 +32,3 @@ def read_root():
             "history": "/api/history"
         }
     }
-
-
-@app.get("/health")
-def health_check():
-    """Check if API is running properly"""
-    return {"status": "healthy", "timestamp": datetime.utcnow()}
